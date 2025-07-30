@@ -54,7 +54,7 @@ EXIT
 	)
 	IF /I "%KEY%" == "C" (
 		DEL GUI.TXT
-		EXIT 1
+		EXIT/B 1
 	)
 GOTO :GUI
 
