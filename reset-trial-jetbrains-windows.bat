@@ -104,6 +104,13 @@ EXIT/B
 EXIT/B
 
 REM This is just a workaround to get one character at a time, without getting stuck with "set/p".
+REM The REPLACE.EXE command is used here to capture a single keystroke from the user.
+REM Explanation:
+REM - REPLACE.EXE is invoked with the parameters "? . /U /W".
+REM - The "/U" flag ensures Unicode mode, and "/W" waits for user input.
+REM - The "?" character is used as a placeholder to prompt the user for input.
+REM - The FOR loop processes the output of REPLACE.EXE, skipping the first line (SKIP=1),
+REM   and captures the first character entered by the user into the variable "KEY".
 :GET_KEY
 	FOR /F SKIP^=1^ DELIMS^=^ EOL^= %%# IN ('REPLACE.EXE ? . /U /W') DO SET "KEY=%%#"
 EXIT/B
